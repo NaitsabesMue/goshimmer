@@ -8,8 +8,7 @@ We only describe the method where all nodes run on one physical machine.
 |:------------------------------------------------------------------------------- |
 | [Why you should run a docker network](#why-you-should-run-a-docker-network)                           |
 | [Installing Docker](#installing-docker)           |
-| [Cloning the goshimmer repository](#cloning-the goshimmer-repository)     |        
-
+| [Cloning the goshimmer repository](#cloning-the-goshimmer-repository)     |        
 | [Setting up the Grafana dashboard](#setting-up-the-grafana-dashboard)           |
 
 ## Why you should run a docker network
