@@ -9,7 +9,10 @@ We only describe the method where all nodes run on one physical machine.
 | [Why you should run a docker network](#why-you-should-run-a-docker-network)                           |
 | [Installing Docker](#installing-docker)           |
 | [Cloning the goshimmer repository](#cloning-the-goshimmer-repository)     |        
+| [Starting the GoShimmer docker network](#starting-the-goshimmer-docker-network)           |
 | [Setting up the Grafana dashboard](#setting-up-the-grafana-dashboard)           |
+| [Spamming](#spamming)           |
+| [Issues and questions](#issues_and_questions)           |
 
 ## Why you should run a docker network
 Running a own docker network gives you complete control on the network, e.g., low PoW. It also enables you to test your own code before it has to survive in the wild. Moreover, it allows you to learn about goshimmer and follow some of the tutorials without having to run a own node in the Pollen network. 
@@ -168,6 +171,30 @@ then
 `curl "http://127.0.0.1:8080/spammer?cmd=start&mpm=100"`
 
 Here, `mpm` mean messages per minute. The spammer is stopped with `curl "http://127.0.0.1:8080/spammer?cmd=stop"`.
+
+
+## Issues and questions
+
+Mongo db error
+root@LAPTOP:/mnt/c/iota/sim/goshimmer/tools/docker-network# docker-compose up -d
+WARNING: The MONGO_DB_ENABLED variable is not set. Defaulting to a blank string.
+Starting entry_node ... done                                                                                                                                                                              Starting docker-network_peer_replica_1 ... done                                                                                                                                                           Starting peer_master                   ... done 
+
+Entry node problem
+2020-12-28T09:40:02Z    ERROR   Autopeering.disc        autopeering/autopeering.go:92   Invalid entry nodes; ignoring: cannot parse master node: host cannot be resolved: lookup entry_node on 127.0.0.11:53: no such host
+
+On vps: how to run run.sh in the background? Or should i always open a new terminal?
+
+On vps: can i access the browser display from my home computer and how?
+
+What is the reason for not having the master node as the entry node?
+Can i add another node container retrospectively with sth like docker-compose up peer_replica
+
+What can we do at 127.0.0.1:9311:9311/tcp" # prometheus ?
+
+Where does grafana come in? Is the dashboard http://localhost:8081/dashboard made with grafana? 
+
+ Is spammer a plugin that always listens for the above command?
 
 
 
