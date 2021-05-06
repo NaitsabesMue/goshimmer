@@ -29,8 +29,9 @@ func main() {
 
 	cMana, err := clientNode.GetOnlineConsensusMana()
 	if err != nil {
-		return
+		// return error
 	}
+	println(cMana.Online)
 
 	for _, m := range cMana.Online {
 		totalActiveCmana += m.Mana
@@ -54,18 +55,12 @@ func main() {
 				WalkOneStepAndGet(tip)
 			}
 		}
+		fmt.Printf("Number of approving nodes: %d \n", len(approvingNodes))
+		fmt.Printf("Number of approving msgss: %d \n", len(futureTips))
+		fmt.Printf("Percentage of active Consensus Mana approving: %g \n", manaApproving/totalActiveCmana)
 		t := time.Now()
 		elapsed := t.Sub(start)
-		approvalWeight := manaApproving/totalActiveCmana * float64(100)
-		fmt.Printf("\r Number of approving nodes: %d \n
-		 Number of approving msgss: %d \n 
-		 Percentage of active Consensus Mana approving: %.2f \n 
-		 Time passed since issuing (milliseconds):", 
-		 len(approvingNodes), len(futureTips), approvalWeight , elapsed.Milliseconds())
-		//fmt.Printf("Number of approving msgss: %d \n", len(futureTips))
-		//fmt.Printf("Percentage of active Consensus Mana approving: %.2f \n", manaApproving/totalActiveCmana)
-
-		//fmt.Println("Time passed since issuing (milliseconds):", elapsed.Milliseconds())
+		fmt.Println("Time passed since issuing (milliseconds):", elapsed.Milliseconds())
 	}
 }
 
